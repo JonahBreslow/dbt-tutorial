@@ -1,26 +1,33 @@
 version: 2
 
-models:
+models: 
   - name: stg_customers
+    description: Pre-cleaning on customer data (aliasing ID to customer_id)
     columns:
       - name: customer_id
+        description: Unique ID for each customer
         tests:
           - unique
           - not_null
 
   - name: stg_orders
+    description: Pre-cleaning on customer data (aliasing ID to order_id and user_id to customer_id)
     columns:
       - name: order_id
+        description: Unique ID for each order.
         tests:
           - unique
           - not_null
       - name: status
+        description: The status of each order
         tests:
           - accepted_values:
               values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
       - name: customer_id
+        description: Unique ID for each customer
         tests:
           - not_null
           - relationships:
               to: ref('stg_customers')
               field: customer_id
+              
