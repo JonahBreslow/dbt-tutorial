@@ -1,3 +1,10 @@
+{{
+    config(
+        tags='stage',
+        materialized='view'
+    )
+}}
+
 select
     id as customer_id,
     first_name,
