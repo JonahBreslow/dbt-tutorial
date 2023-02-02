@@ -1,7 +1,7 @@
 {{
     config(
-        tags='stage',
-        materialized='view'
+        materialized='table',
+        tags='stage'
     )
 }}
 
